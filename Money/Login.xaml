@@ -1,0 +1,15 @@
+﻿<Window x:Class="Money.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Money"
+        mc:Ignorable="d"
+        Title="Login" Height="250" Width="500">
+    <Grid>
+        <Label Height="30" Width="140" Content="Вход" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,170"/>
+        <TextBlock Height="25" Width="140" Text="Введите логин" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,100"/>
+        <TextBox x:Name="LoginBox" Height="20" Width="140" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20,20,20,50"/>
+        <Button Content="Войти" HorizontalAlignment="Center" Margin="0,158,0,0" VerticalAlignment="Top" Width="120" Height="25" Click="Button_Click"/>
+    </Grid>
+</Window>
