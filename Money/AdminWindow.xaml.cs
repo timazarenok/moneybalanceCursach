@@ -23,5 +23,18 @@ namespace Money
         {
             InitializeComponent();
         }
+
+        private void Category_Click(object sender, RoutedEventArgs e)
+        {
+            AddCategory window = new AddCategory();
+            window.Show();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Login window = new Login();
+            window.Show();
+            Close();
+        }
     }
 }

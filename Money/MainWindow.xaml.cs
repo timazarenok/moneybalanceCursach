@@ -25,7 +25,7 @@ namespace Money
         {
             InitializeComponent();
             SetWalletAndBalance();
-            CreateOrSetTable();
+            SetTable();
         }
         public void SetWalletAndBalance()
         {
@@ -50,40 +50,22 @@ namespace Money
                 Balance.Content = "Общие расходы: ";
             }
         }
-        public void CreateOrSetTable()
-        {
-            DataTable dt2 = SqlDB.Select($"select * from Categories_Money where user_id = {SqlDB.UserID}");
-            if (dt2.Rows.Count > 0)
-            {
-               SetTable();
-            }
-            else
-            {
-                DataTable dt = SqlDB.Select($"select * from Categories");
-                foreach (DataRow dr in dt.Rows)
-                {
-                    int category_id = SqlDB.GetId($"select * from Categories where name = '{dr["name"]}'");
-                    SqlDB.Command($"insert into Categories_Money values({SqlDB.UserID}, {category_id}, 0)");
-                }
-                SetTable();
-            }
-        }
         public void SetTable()
         {
-            DataTable dt = SqlDB.Select($"select Categories.name as category, Categories_Money.value as value from Categories_Money join Categories on Categories_Money.category_id = Categories.id where user_id={SqlDB.UserID}");
+            DataTable dt = SqlDB.Select($"select Categories.name as category, Categories_Money.value as value, Operations.name as operation from Categories_Money " +
+                $"join Categories on Categories_Money.category_id = Categories.id " +
+                $"join Operations on Categories.operation = Operations.id where user_id={SqlDB.UserID}");
             List<CategoryValue> categoryValues = new List<CategoryValue>();
             foreach(DataRow dr in dt.Rows)
             {
-                categoryValues.Add(new CategoryValue { Category = dr["category"].ToString(), Value = dr["value"].ToString() });
+                categoryValues.Add(new CategoryValue
+                {
+                    Category = dr["category"].ToString(),
+                    Value = dr["value"].ToString(),
+                    Operation = dr["operation"].ToString()
+                });
             }
             Table.ItemsSource = categoryValues;
-        }
-
-        private void House_Click(object sender, RoutedEventArgs e)
-        {
-            HouseWindow window = new HouseWindow();
-            window.Closed += new EventHandler(CloseWin);
-            window.Show();
         }
 
         private void CloseWin(object sender, EventArgs e)
@@ -92,39 +74,31 @@ namespace Money
             SetWalletAndBalance();
         }
 
-        private void Party_Click(object sender, RoutedEventArgs e)
-        {
-            PartyWindow window = new PartyWindow();
-            window.Closed += new EventHandler(CloseWin);
-            window.Show();
-        }
-
-        private void Transport_Click(object sender, RoutedEventArgs e)
-        {
-            TransportWindow window = new TransportWindow();
-            window.Closed += new EventHandler(CloseWin);
-            window.Show();
-        }
-
-        private void Education_Click(object sender, RoutedEventArgs e)
-        {
-            EducationWindow window = new EducationWindow();
-            window.Closed += new EventHandler(CloseWin);
-            window.Show();
-        }
-
-        private void Products_Click(object sender, RoutedEventArgs e)
-        {
-            ProductsWindow window = new ProductsWindow();
-            window.Closed += new EventHandler(CloseWin);
-            window.Show();
-        }
-
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             SettingsWindow window = new SettingsWindow();
             window.Closed += new EventHandler(CloseWin);
             window.Show();
+        }
+
+        private void Add_Click(object sender, RoutedEventArgs e)
+        {
+            AddWindow window = new AddWindow();
+            window.Show();
+            window.Closed += new EventHandler(CloseWin);
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            DeleteWindow window = new DeleteWindow();
+            window.Show();
+            window.Closed += new EventHandler(CloseWin);
+        }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Login window = new Login();
+            window.Show();
+            Close();
         }
     }
 }

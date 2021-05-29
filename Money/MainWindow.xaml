@@ -22,38 +22,21 @@
         <DataGrid x:Name="Table" AutoGenerateColumns="False" Width="500" Height="300" Margin="0,30,150,0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Категория" Width="200" Binding="{Binding Path=Category}"/>
-                <DataGridTextColumn Header="Значение" Width="200" Binding="{Binding Path=Value}"/>
+                <DataGridTextColumn Header="Значение" Width="190" Binding="{Binding Path=Value}"/>
+                <DataGridTextColumn Header="Операция" Width="100" Binding="{Binding Path=Operation}"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="Categories" Margin="500,0,0,50" Width="100" Height="250" Orientation="Vertical">
-            <Button x:Name="House" Style="{StaticResource Rounded}" Click="House_Click">
-                <TextBlock FontWeight="Bold" FontSize="9" TextWrapping="Wrap">
-                Дом
-                <LineBreak/>
-                Расходы
-                </TextBlock>
+            <Button x:Name="Add" Style="{StaticResource Rounded}" Click="Add_Click">
+               Доход
             </Button>
-            <Button x:Name="Party" Style="{StaticResource Rounded}" Click="Party_Click">
-                <TextBlock FontWeight="Bold" FontSize="9" TextWrapping="Wrap">
-                    Развлечения
-                </TextBlock>
+            <Button x:Name="Delete" Style="{StaticResource Rounded}" Click="Delete_Click">
+                Расход
             </Button>
-            <Button x:Name="Transport" Style="{StaticResource Rounded}" Click="Transport_Click">
-                <TextBlock FontWeight="Bold" FontSize="9" TextWrapping="Wrap">
-                    Трансорт
-                </TextBlock>
+            <Button x:Name="Settings" Style="{StaticResource Rounded}" Click="Settings_Click">
+                Настройки
             </Button>
-            <Button x:Name="Education" Style="{StaticResource Rounded}" Click="Education_Click">
-                <TextBlock FontWeight="Bold" FontSize="9" TextWrapping="Wrap">
-                    Обучение
-                </TextBlock>
-            </Button>
-            <Button x:Name="Products" Style="{StaticResource Rounded}" Click="Products_Click">
-                <TextBlock FontWeight="Bold" FontSize="9" TextWrapping="Wrap">
-                    Продукты
-                </TextBlock>
-            </Button>
+            <Button x:Name="Exit" Style="{StaticResource Rounded}" Content="Выход" Click="Exit_Click" />
         </StackPanel>
-        <Button x:Name="Settings" Width="100" Height="30" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,250,95,0" Click="Settings_Click">Настрройки</Button>
     </Grid>
 </Window>

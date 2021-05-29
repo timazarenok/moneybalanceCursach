@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Money"
         mc:Ignorable="d"
-        Title="AdminWindow" Height="450" Width="800">
+        Title="AdminWindow" Height="350" Width="400">
     <Grid>
-        
+        <Button x:Name="Category" Content="Добавление категории" Width="200" Height="30" Click="Category_Click"/>
+        <Button x:Name="Exit" Width="100" Height="25" Content="Выход" Margin="0,270,250,0" Click="Exit_Click" />
     </Grid>
 </Window>
