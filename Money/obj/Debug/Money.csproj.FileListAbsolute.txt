@@ -26,3 +26,7 @@ C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\AddWindow.baml
 C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\DeleteWindow.baml
 C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\AddCategory.g.cs
 C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\AddCategory.baml
+C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\Interop.Office2013CustomActionsLib.dll
+C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\Money.csproj.ResolveComReference.cache
+C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\InfoWindow.g.cs
+C:\Users\timog\OneDrive\Desktop\Money\Money\obj\Debug\InfoWindow.baml

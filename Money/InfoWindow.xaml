@@ -1,0 +1,66 @@
+﻿<Window x:Class="Money.InfoWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Money"
+        mc:Ignorable="d"
+        Title="InfoWindow" Height="450" Width="800">
+    <Grid>
+        <ScrollViewer>
+            <StackPanel>
+                <Label FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top">Руководство по использованию</Label>
+                <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0">Добавление данных</Label>
+                <TextBlock TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" Width="700">
+            Добавление данных в базу данных осуществляется с помощью форм и ввода данных в текстовые блоки.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавлвения в таблицу Users</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Для добавления в таблицу Users, нужно открыть окно Регистрации и ввести email и 
+            Вы автомотически зарегестрируетесь и войдете в систему
+            
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавления своих доходов или расходов</Bold>
+            <LineBreak/>
+            <LineBreak/>
+           Для добавления доходов или расходов, сначала надо авторизоваться как пользователь и войти в систему, после чего 
+                    у вас отобразиться окно со статистикой ваших доходов и расходов по категориям и операция. Справа от этой
+                    таблицы есть 2 кнопки "Доходы" и "Расходы", они открывают форму добавления. Чтобы добавить Доход или Расход
+                    в этой форме надо выбрать категорию дохода/расхода, а после ввести сумму и нажать на кнопку "Добавить".
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для добавлвения в таблицу Категорий дохода/расхода</Bold>
+            <LineBreak/>
+            <LineBreak/>
+            Для добавления в таблицу Категорий, надо авторизоваться как администратор после чего откроется окно с кнопкой "Добавление категории".
+                    Нажав на нее Вам откроется окно с добавлением новой категории. Вам потребуется выбрать Операцию доход или расход,
+                    после чего надо ввести название категории. После нажать на кнопку "Добавить" и данные успешно отправяться в БД.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для удаления из таблицы Доходов/Расходов</Bold>
+            <LineBreak/>
+            <LineBreak/>
+                Вам надо авторризоваться как пользователь, вам откроется Главное окно и в нем вы увидите таблицу
+                    Доходов/Расходов, под ней будет Текстовое поле для ввода ID записи и кнопка удаления. Вводим 
+                    ID записи которую надо удалить, после чего нажимаем на кнопку удаления. И данные будут успешно удалены из БД.
+            <LineBreak/>
+            <LineBreak/>
+            <Bold>Для удаления из Категорий</Bold>
+            <LineBreak/>
+            <LineBreak/>
+                Чтобы удалить категорию, надо авторизоваться как Администратор и нажать на кнопку "Удаления категории". После чего
+                    Вам отобразиться таблица всех категорий, для удаления надо ввести ID категории и нажать на кнопку "Удалить". После чего 
+                    категория будет успешно удалена.
+                </TextBlock>
+                <Label FontWeight="Bold" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,0,0,0">Экспорт отчетов</Label>
+                <TextBlock Margin="0,0,0,0" TextWrapping="Wrap" FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" Width="700">
+            Экспорт данных осуществляется в EXCEL. Чтобы сделать выписку отчета по доходам и расходам, надо нажать на кнопку "Отчет в Excel", когда
+                    вы авторизованы как Пользователь, она будет под таблицей доходов и расходов.
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

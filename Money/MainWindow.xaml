@@ -19,16 +19,18 @@
     <Grid>
         <Label x:Name="WalletValue" Content="Валюта: " Margin="70,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <Label x:Name="Balance" Content="Общие расходы: " Margin="250,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <Label x:Name="Plus" Content="Общие доходы: " Margin="500,20,0,0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <DataGrid x:Name="Table" AutoGenerateColumns="False" Width="500" Height="300" Margin="0,30,150,0">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Категория" Width="200" Binding="{Binding Path=Category}"/>
+                <DataGridTextColumn Header="ID" Width="30" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="Категория" Width="170" Binding="{Binding Path=Category}"/>
                 <DataGridTextColumn Header="Значение" Width="190" Binding="{Binding Path=Value}"/>
                 <DataGridTextColumn Header="Операция" Width="100" Binding="{Binding Path=Operation}"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="Categories" Margin="500,0,0,50" Width="100" Height="250" Orientation="Vertical">
             <Button x:Name="Add" Style="{StaticResource Rounded}" Click="Add_Click">
-               Доход
+                Доход
             </Button>
             <Button x:Name="Delete" Style="{StaticResource Rounded}" Click="Delete_Click">
                 Расход
@@ -38,5 +40,9 @@
             </Button>
             <Button x:Name="Exit" Style="{StaticResource Rounded}" Content="Выход" Click="Exit_Click" />
         </StackPanel>
+        <TextBlock Text="ID" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="250,0,0,10" FontSize="20"/>
+        <TextBox x:Name="DeleteID" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,400,10"/>
+        <Button x:Name="DeleteButton" Content="Удалить" Width="100" Height="25" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,270,10" Click="DeleteButton_Click" />
+        <Button x:Name="Excel" Width="100" Height="25" Content="Отчет в Excel" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="80,0,0,10" Click="Excel_Click"/>
     </Grid>
 </Window>

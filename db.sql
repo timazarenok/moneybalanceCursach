@@ -43,3 +43,7 @@ insert into Wallets values ('BY'), ('EU'), ('US')
 select Categories.name as category, Categories_Money.value as value, Operations.name as operation from Categories_Money 
 join Categories on Categories_Money.category_id = Categories.id
 join Operations on Categories.operation = Operations.id
+
+select Sum([value]) as [value] from Categories_Money
+join Categories on Categories_Money.category_id = Categories.id
+where Categories.operation = 1
