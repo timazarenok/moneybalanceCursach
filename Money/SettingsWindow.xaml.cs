@@ -35,6 +35,11 @@ namespace Money
             }
             Wallets.ItemsSource = wallets;
         }
+        private int GetPreviousWallet()
+        {
+            DataTable setting = SqlDB.Select($"select * from Settings where user_id = {SqlDB.UserID}");
+            return Convert.ToInt32(setting.Rows[0]["wallet_id"]);
+        }
 
         private void Update_Click(object sender, RoutedEventArgs e)
         {
@@ -43,6 +48,14 @@ namespace Money
             DataTable dt = SqlDB.Select($"select * from Settings where user_id = {SqlDB.UserID}");
             if(dt.Rows.Count > 0)
             {
+                int previous_id = GetPreviousWallet();
+                DataTable value = SqlDB.Select($"select value from Converter where first={previous_id} and second={wallet_id}");
+                double coef = Convert.ToDouble(value.Rows[0]["value"]);
+                DataTable newrows = SqlDB.Select($"select * from Categories_Money where user_id = {SqlDB.UserID}");
+                foreach(DataRow dr in newrows.Rows)
+                {
+                    SqlDB.Command($"Update Categories_Money set [value] = {dr["value"]} * {coef} where id = {dr["id"]}");
+                }
                 if (SqlDB.Command($"update Settings set wallet_id = {wallet_id} where user_id = {SqlDB.UserID}"))
                 {
                     MessageBox.Show("Успешно обновлено");

@@ -35,15 +35,29 @@ create table Categories_Money(
 id int Identity(1,1) primary key,
 [user_id] int references Users(id) on delete cascade,
 category_id int references Categories(id) on delete cascade,
-[value] decimal(5,2)
+[value] decimal(5,2),
+[date] date
 )
+
+Update Categories_Money set [value] = 20 * 0.32 where id = 1
+select * from Categories_Money
+
+create table Converter(
+id int Identity(1,1) primary key,
+[first] int,
+[second] int,
+[value] decimal(5,2),
+foreign key ([first]) references Wallets(id),
+foreign key ([second]) references Wallets(id)
+)
+
+GO
+CREATE TRIGGER Users_insert
+ON Users
+AFTER INSERT
+AS
+INSERT INTO Settings values((SELECT id FROM INSERTED), (select id from Wallets where [name] = 'BY'))
 
 select * from Settings
 insert into Wallets values ('BY'), ('EU'), ('US')
-select Categories.name as category, Categories_Money.value as value, Operations.name as operation from Categories_Money 
-join Categories on Categories_Money.category_id = Categories.id
-join Operations on Categories.operation = Operations.id
-
-select Sum([value]) as [value] from Categories_Money
-join Categories on Categories_Money.category_id = Categories.id
-where Categories.operation = 1
+insert into Converter values(1,2,0.32), (1,3,0.40), (2,1,3.09), (2,3,1.22), (3,1,2.52), (3,2,0.82)

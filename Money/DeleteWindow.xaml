@@ -11,7 +11,7 @@
         <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,70,0,0" Text="Категория расхода"/>
         <ComboBox x:Name="Categories" Width="200" Height="25" Margin="0,100,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         <TextBlock VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,140,0,0" Text="Кол-во расхода"/>
-        <TextBox x:Name="Value" Width="150" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,170,0,0" />
+        <TextBox x:Name="Value" Width="150" Height="25" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,170,0,0" PreviewTextInput="Value_PreviewTextInput" />
         <Button x:Name="Add" Content="Добавить" Width="120" Height="25" Margin="0,150,0,0" Click="Add_Click"/>
     </Grid>
 </Window>

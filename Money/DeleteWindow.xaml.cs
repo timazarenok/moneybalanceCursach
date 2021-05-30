@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -38,10 +39,10 @@ namespace Money
         }
         private void Add_Click(object sender, RoutedEventArgs e)
         {
-            if (Value.Text.Length > 0)
+            if (Value.Text.Length > 0 && Convert.ToDouble(Value.Text) > 0)
             {
                 int category_id = SqlDB.GetId($"select * from Categories where [name]='{Categories.SelectedItem}'");
-                if (SqlDB.Command($"insert into Categories_Money values({SqlDB.UserID}, {category_id}, {Value.Text})"))
+                if (SqlDB.Command($"insert into Categories_Money values({SqlDB.UserID}, {category_id}, {Value.Text}, (select convert(varchar(10),(select getdate()), 120)))"))
                 {
                     MessageBox.Show("Добавлено");
                 }
@@ -50,6 +51,12 @@ namespace Money
             {
                 MessageBox.Show("Введите значение");
             }
+        }
+
+        private void Value_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

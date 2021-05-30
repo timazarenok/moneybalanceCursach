@@ -24,8 +24,9 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Width="30" Binding="{Binding Path=ID}"/>
                 <DataGridTextColumn Header="Категория" Width="170" Binding="{Binding Path=Category}"/>
-                <DataGridTextColumn Header="Значение" Width="190" Binding="{Binding Path=Value}"/>
-                <DataGridTextColumn Header="Операция" Width="100" Binding="{Binding Path=Operation}"/>
+                <DataGridTextColumn Header="Значение" Width="100" Binding="{Binding Path=Value}"/>
+                <DataGridTextColumn Header="Операция" Width="90" Binding="{Binding Path=Operation}"/>
+                <DataGridTextColumn Header="Дата" Width="100" Binding="{Binding Path=Date}"/>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel x:Name="Categories" Margin="500,0,0,50" Width="100" Height="250" Orientation="Vertical">

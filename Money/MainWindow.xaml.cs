@@ -69,7 +69,7 @@ namespace Money
         }
         public void SetTable()
         {
-            DataTable dt = SqlDB.Select($"select Categories_Money.id, Categories.name as category, Categories_Money.value as value, Operations.name as operation from Categories_Money " +
+            DataTable dt = SqlDB.Select($"select Categories_Money.id, Categories.name as category, Categories_Money.value as value, Operations.name as operation, Categories_Money.date from Categories_Money " +
                 $"join Categories on Categories_Money.category_id = Categories.id " +
                 $"join Operations on Categories.operation = Operations.id where user_id={SqlDB.UserID}");
             List<CategoryValue> categoryValues = new List<CategoryValue>();
@@ -80,7 +80,8 @@ namespace Money
                     ID = dr["id"].ToString(),
                     Category = dr["category"].ToString(),
                     Value = dr["value"].ToString(),
-                    Operation = dr["operation"].ToString()
+                    Operation = dr["operation"].ToString(),
+                    Date = dr["date"].ToString().Substring(0, 10)
                 });
             }
             Table.ItemsSource = categoryValues;
